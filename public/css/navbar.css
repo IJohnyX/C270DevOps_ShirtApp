@@ -1,0 +1,50 @@
+/* Custom CSS */
+.navbar-nav .nav-link {
+    color: #000;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #0056b3;
+    transition: width 0.3s ease, right 0.3s ease;
+  }
+  .navbar-nav .nav-link:hover {
+    color: #0056b3;
+  }
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+    right: 0;
+  }
+  .navbar-brand img {
+    width: 30px;
+    height: 24px;
+  }
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox%3D"0 0 30 30" xmlns%3D"http://www.w3.org/2000/svg"%3E%3Cpath stroke%3D"rgba%280%2C 0%2C 0%2C 0.5%29" stroke-width%3D"2" stroke-linecap%3D"round" stroke-miterlimit%3D"10" d%3D"M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  }
+  .footer-container {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  .footer-links a {
+    margin: 0 10px;
+    color: #000;
+    text-decoration: none;
+  }
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    margin-bottom: 80px; /* Adjust according to the footer's height */
+  }

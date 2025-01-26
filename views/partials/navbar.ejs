@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+
+  <style>
+    /* Custom CSS */
+    .navbar-nav .nav-link {
+      color: #fff; /* Change text color to white */
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ddd; /* Change hover text color to a lighter shade */
+    }
+    .navbar-brand img {
+      width: 80px; /* Increased width */
+      height: 60px; /* Increased height */
+    }
+    .navbar-toggler-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox%3D"0 0 30 30" xmlns%3D"http://www.w3.org/2000/svg"%3E%3Cpath stroke%3D"rgba%28255%2C 255%2C 255%2C 0.5%29" stroke-width%3D"2" stroke-linecap%3D"round" stroke-miterlimit%3D"10" d%3D"M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+    }
+    .footer-container {
+      background-color: #f8f9fa;
+      padding: 1rem 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    .footer-links a {
+      margin: 0 10px;
+      color: #000;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      margin-bottom: 80px; /* Adjust according to the footer's height */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="https://i.imgur.com/rlbDDbo_d.png?maxwidth=520&shape=thumb&fidelity=high" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if (user && user.email === 'admin@gmail.com') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">Admin Panel</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product">Product Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+          <% } %>
+        </ul>
+  
+        <ul class="navbar-nav ms-auto">
+          <% if (user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          <% } %>
+  
+          <% if (!user || (user && user.email !== 'admin@gmail.com')) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart">
+                <img src="https://i.imgur.com/htlzUEB_d.png?maxwidth=520&shape=thumb&fidelity=high" alt="Cart" width="28" height="28">
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Your page content goes here -->
+  <div class="content">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirt Paradise | Product</title>
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <style>
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            height: 600px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .hidden-header {
+            display: none;
+        }
+
+        .container.mt-4 {
+            justify-content: space-evenly;
+            height: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .col-sm-6.col-md-4.mb-4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs') %>
+        <main class="content">        
+            <div class="container mt-4">
+                <div class="row">
+                    <% products.forEach((product, index)=> { %>
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="product" id="product<%= index + 1 %>">
+                                <a
+                                    href="/product?product_id=<%= product.product_id %>&product_name=<%= encodeURIComponent(product.product_name) %>&product_price=<%= product.price %>">
+                                    <img src="/images/<%= product.image %>" class="img-fluid"
+                                        alt="<%= product.product_name %>">
+                                </a>
+                                <h5 class="text-center">
+                                    <%= product.product_name %>
+                                </h5>
+                                <p class="text-center">Price: $<%= parseFloat(product.price).toFixed(2) %>
+                                </p>
+
+                                <form action="/cart" method="post">
+                                    <input type="hidden" name="product_id" value="<%= product.product_id %>">
+                                    <input type="hidden" name="product_name" value="<%= product.product_name %>">
+                                    <input type="hidden" name="product_price" value="<%= product.price %>">
+                                    <div class="quantity-controls">
+                                        <button type="button" class="btn btn-dark"
+                                            onclick="decreaseQuantity('quantity<%= index + 1 %>')">-</button>
+                                        <input type="number" id="quantity<%= index + 1 %>" name="quantity" value="1"
+                                            min="1">
+                                        <button type="button" class="btn btn-dark"
+                                            onclick="increaseQuantity('quantity<%= index + 1 %>')">+</button>
+                                    </div>
+                                    <button type="submit" class="btn btn-success mt-2">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% }); %>
+
+                </div>
+                
+                
+        </main>
+        
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/product">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Help</h3>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    &copy; 2024 Copyrights Reserved
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function decreaseQuantity(inputId) {
+                const input = document.getElementById(inputId);
+                if (input.value > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            }
+
+            function increaseQuantity(inputId) {
+                const input = document.getElementById(inputId);
+                input.value = parseInt(input.value) + 1;
+            }
+        </script>
+</body>
+
+</html>

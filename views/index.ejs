@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shirt Paradise | Home</title>
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <%- include('partials/navbar.ejs') %>
+
+    <main class="content">
+      <!-- Image Slider with margin-top for separation -->
+      <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/images/banner1.png" class="d-block w-100" alt="Slider Image 1" height="500px">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/banner2.png" class="d-block w-100" alt="Slider Image 2">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/stussy_banner3.png" class="d-block w-100" alt="Slider Image 3" height="500px"> 
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- New Section below the carousel -->
+      <section class="features mt-5">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-4">
+              <div class="feature">
+                <i class="fas fa-money-check-alt fa-3x"></i>
+                <h3>Easy Payment</h3>
+                <p>Complete your transaction with ease</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature">
+                <i class="fas fa-certificate fa-3x"></i>
+                <h3>Original Guaranteed</h3>
+                <p>All of our products are 100% original</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature">
+                <i class="fas fa-gift fa-3x"></i>
+                <h3>Many Rewards</h3>
+                <p>Get many special offers at our store</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <div class="content">
+        <!-- Added margin-top for separation -->
+        <header class="hero mt-4">
+          <div class="container text-center">
+            <h1>Welcome to Shirt Paradise</h1>
+            <p>Your one-stop shop for the best shirts in SG!</p>
+            <a href="/product" class="btn btn-primary btn-lg">Shop Now</a>
+          </div>
+        </header>
+
+        <section class="product mt-5">
+          <div class="container">
+            <h2 class="text-center">Our Latest Products</h2>
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="/images/adlvbear1.png" class="card-img-top" alt="Shirt 1">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">ADLV Shirt (Black)</h5>
+                    <p class="card-text">$50.00</p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="/images/mlb monogram blue.jpg" class="card-img-top" alt="Shirt 2" height="390px">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">MLB New York Yankees Monogram (Blue)</h5>
+                    <p class="card-text">$50.00</p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <img src="/images/Stussy Dice Shirt.jpg" class="card-img-top" alt="Shirt 3" height="390px">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Stussy Dice Shirt (White)</h5>
+                    <p class="card-text">$50.00</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/product">Products</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Help</h3>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="copyright">
+            &copy; 2024 Copyrights Reserved
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
+</body>
+
+</html>

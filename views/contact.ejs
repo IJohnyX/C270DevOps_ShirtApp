@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirt Paradise | Contact</title>
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <main class="content">
+        <%- include('partials/navbar.ejs') %>
+        <div class="container">
+            <div class="contact-form">
+                <h2>Get in Touch</h2>
+                <form id="contactForm" action="/contact" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="tel" id="hp_number" name="hp_number" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Find Us Here</h3>
+                <p>Marina Bay Sands, Singapore</p>
+                <p><a href="mailto:shirtparadise@gmail.com">shirtparadise@gmail.com</a></p>
+                <p>+65 8233 5300</p>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/" class="facebook-link"><img src="https://i.imgur.com/8b6i8GX.png" alt="Facebook"></a>
+                    <a href="https://x.com/?lang=en" class="twitter-link"><img src="https://i.imgur.com/l2SR82o.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com/" class="linkedin-link"><img src="https://i.imgur.com/2zggWPg.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/" class="instagram-link"><img src="https://i.imgur.com/VtCmMIN.png" alt="Instagram"></a>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed/v1/place?q=Bayfront+Avenue,+Marina+Bay+Sands+Singapore,+Singapore&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                        width="300" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/product">Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get Help</h3>
+                <ul>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    &copy; 2024 Copyrights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script src="/contact.js"></script>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+    
+          const formData = new FormData(this);
+    
+          fetch('/contact', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.text())
+          .then(data => {
+            alert(data); // Display the server response
+            this.reset(); // Optionally reset the form
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        });
+      </script>
+</body>
+
+</html>

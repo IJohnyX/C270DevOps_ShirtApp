@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        a.btn {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <title>Update Product</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center"><h2>Update Product Details</h2></div>
+        <% if (product) { %> 
+            <form action="/updateProduct/<%= product.product_id %>" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="product_name" class="form-label">Product Name:</label>
+                    <input type="text" class="form-control" id="product_name" name="product_name" value="<%= product.product_name %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" class="form-control" id="price" name="price" min="0" step="0.01" value="<%= product.price %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity:</label>
+                    <input type="text" class="form-control" id="quantity" name="quantity" min="0" step="0.01" value="<%= product.quantity %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="currentImage" class="form-label">Current Image:</label>
+                    <input type="text" class="form-control" id="currentImage" name="currentImage" value="<%= product.image %>" disabled>
+                    <img src = "/images/<%= product.image %> " width="25%"> <br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="newImage" class="form-label">New Image:</label>
+                    <input type="file" class="form-control" id="newImage" name="image" accept="image/*" value="<%= product.image %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        <% } else { %>
+            <p>No product found.</p>
+        <% } %>
+        <a href="/admin" class="btn btn-secondary mt-3">Back</a>
+    </div>
+</body>
+</html>

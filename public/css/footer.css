@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html,body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+   }
+.content {
+    flex: 1 0 auto;
+  }
+footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 12px 0;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+.footer-section {
+    margin: 0 15px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.copyright {
+    position: absolute; /* Position absolutely within the footer */
+    bottom: 10px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    text-align: right;
+    font-size: 14px;
+    color: #a0a0a0;
+    padding: 10px 0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .footer-content {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: flex-start; /* Align content to the left */
+        padding: 0 20px; /* Add some padding on the sides */
+    }
+    .footer-section {
+        width: 50%; /* Two columns on medium-small screens */
+        margin-bottom: 30px;
+        padding-right: 15px; /* Add some space between columns */
+    }
+}
+
+@media (max-width: 574px) {
+    .footer-section {
+        width: 100%; /* Full width on very small screens */
+    }
+    .social-icons {
+        justify-content: flex-start; /* Align social icons to the left on small screens */
+    }
+}
