@@ -364,6 +364,60 @@ app.post('/updateProduct/:id', upload.single('image'), (req, res) => {
   });
 });
 
+app.get('/search', (req, res) => {
+  const { query } = req.query;
+
+  if (!query) {
+      return res.status(400).send('Query parameter is required.');
+  }
+
+  const sql = `SELECT product_id, product_name, price, image, quantity
+               FROM product 
+               WHERE product_name LIKE ?`;
+  connection.query(sql, [`%${query}%`], (err, results) => {
+      if (err) {
+          console.error('Error executing query:', err);
+          return res.status(500).send('An error occurred while searching.');
+      }
+
+      if (results.length === 0) {
+          return res.status(404).send('No products found matching your query.');
+      }
+
+      res.json(results);
+  });
+});
+
+app.get('/product/:id', (req, res) => { // 👈 Use path parameter :id
+  const productId = req.params.id; // 👈 Access via req.params
+
+  const sql = `
+    SELECT product_id, product_name, price, image, quantity 
+    FROM product 
+    WHERE product_id = ?
+  `;
+
+  connection.query(sql, [productId], (err, results) => {
+    if (err) {
+      console.error('Error fetching product:', err);
+      return res.status(500).send('Server error');
+    }
+
+    if (results.length === 0) {
+      return res.status(404).send('Product not found');
+    }
+
+    res.render('productDetails', { product: results[0] }); // Render EJS template
+  });
+});
+
+
+
+
+
+
+
+
 
 
 app.use((err, req, res, next) => {
