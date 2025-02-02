@@ -415,11 +415,6 @@ app.get('/product/:id', (req, res) => { // 👈 Use path parameter :id
 
 
 
-
-
-
-
-
 app.use((err, req, res, next) => {
   console.error(err.stack); // Log error stack trace
   res.status(500).send('Something broke!'); // Send error response
