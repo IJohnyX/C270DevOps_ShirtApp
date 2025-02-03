@@ -7,6 +7,8 @@ const { body, validationResult } = require('express-validator'); // Import expre
 const flash = require('connect-flash');
 const app = express(); // Create an instance of an Express application
 
+module.exports = app;
+
 // Set up middleware
 app.use(bodyParser.urlencoded({ extended: false })); // Parse URL-encoded bodies
 app.use(bodyParser.json()); // Parse JSON bodies
@@ -424,3 +426,5 @@ const PORT = process.env.PORT || 3001; // Set the port number from environment v
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`); // Log the server start message
 });
+
+module.exports = app;
