@@ -23,7 +23,21 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 } // Use secure cookies if using HTTPS
 }));
 
+const connection = mysql.createConnection({
+  connectionLimit: 10, // Maximum number of concurrent connections
+  host: 'sql12.freesqldatabase.com', // Database host
+  user: 'sql12758935', // Database user
+  password: 'gMrYKnfR9k', // Database password
+  database: 'sql12758935' // Database name
+});
 
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err); // Log connection error
+    return;
+  }
+  console.log('Connected to MySQL database'); // Log successful connection
+});
 
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
@@ -48,21 +62,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }); // Configure Multer with the defined storage settings
 
-const connection = mysql.createConnection({
-  connectionLimit: 10, // Maximum number of concurrent connections
-  host: 'sql12.freesqldatabase.com', // Database host
-  user: 'sql12758935', // Database user
-  password: 'gMrYKnfR9k', // Database password
-  database: 'sql12758935' // Database name
-});
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err); // Log connection error
-    return;
-  }
-  console.log('Connected to MySQL database'); // Log successful connection
-});
 
 app.set("view engine", "ejs"); // Set EJS as the templating engine
 
